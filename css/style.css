@@ -455,3 +455,67 @@ body { background: var(--dark); overflow-x: hidden; }
 
 .blind-cue--left  { left:  10vw; }
 .blind-cue--right { right: 10vw; }
+
+
+/* ═══════════════════════════════════════════════════
+   MOBILE  (≤ 768px)
+═══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Loader ── */
+  .loader-bar { left: 24px; right: 24px; }
+  .loader-brand { letter-spacing: 0.28em; }
+
+  /* ── Hero panels ── */
+  .panel { gap: 16px; }
+
+  .honor-title {
+    font-size: clamp(52px, 13vw, 260px);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-tag {
+    left: 20px;
+    top: 22px;
+    font-size: 9px;
+  }
+
+  .hero-tagline {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+
+  .panel-statue {
+    height: 52vh;
+    right: -4%;
+  }
+
+  .scroll-hint { right: 20px; bottom: 20px; }
+
+  /* ── Gallery ── */
+  .gallery-wrapper {
+    --left-pad: 5vw;
+    gap: 4rem;
+    padding: 4rem 0;
+  }
+
+  .image-box,
+  .image-box.gi-reverse {
+    grid-template-columns: 1fr;
+    padding: 1rem 5vw;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .swapper   { height: 58vw; }
+  .controller { height: 82vw; }
+  .g-caption  { width: 100%; }
+
+  /* ── Next section ── */
+  .next-section { padding: 0 6vw; }
+
+  .next-title { font-size: clamp(32px, 9vw, 110px); }
+
+  /* ── Console typewriter ── */
+  .console-wrap { font-size: clamp(14px, 3.5vw, 64px); }
+}
