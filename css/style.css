@@ -458,64 +458,82 @@ body { background: var(--dark); overflow-x: hidden; }
 
 
 /* ═══════════════════════════════════════════════════
-   MOBILE  (≤ 768px)
+   MOBILE  (≤ 850px) — cirugía mobile, desktop intacto
 ═══════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
 
   /* ── Loader ── */
-  .loader-bar { left: 24px; right: 24px; }
-  .loader-brand { letter-spacing: 0.28em; }
+  .loader-bar   { left: 24px; right: 24px; }
+  .loader-brand { letter-spacing: 0.22em; }
 
-  /* ── Hero panels ── */
-  .panel { gap: 16px; }
+  /* ── Hero — título legible, estatua abajo ── */
+  .panel { gap: 12px; }
 
   .honor-title {
-    font-size: clamp(52px, 13vw, 260px);
-    letter-spacing: 0.06em;
+    font-size: clamp(48px, 12.5vw, 260px);
+    letter-spacing: 0.05em;
   }
 
   .hero-tag {
-    left: 20px;
-    top: 22px;
+    left: 5%;
+    top: 20px;
     font-size: 9px;
+    letter-spacing: 0.2em;
   }
 
   .hero-tagline {
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    font-size: 9px;
+    letter-spacing: 0.16em;
   }
 
+  /* Estatua reducida al fondo, sin tapar el título */
   .panel-statue {
-    height: 52vh;
-    right: -4%;
+    height: 48vh;
+    right: 0;
+    bottom: 0;
   }
 
-  .scroll-hint { right: 20px; bottom: 20px; }
+  .scroll-hint { right: 5%; bottom: 20px; }
 
-  /* ── Gallery ── */
+  /* ── Gallery — columna única ── */
   .gallery-wrapper {
-    --left-pad: 5vw;
-    gap: 4rem;
-    padding: 4rem 0;
+    --left-pad: 5%;
+    gap: 3.5rem;
+    padding: 3.5rem 0;
   }
 
   .image-box,
   .image-box.gi-reverse {
     grid-template-columns: 1fr;
-    padding: 1rem 5vw;
+    padding-inline: 5%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     min-height: auto;
     gap: 1.5rem;
   }
 
-  .swapper   { height: 58vw; }
-  .controller { height: 82vw; }
-  .g-caption  { width: 100%; }
+  .swapper    { height: 62vw; }
+  .controller { height: 85vw; }
+  .g-caption  { width: 100%; font-size: 10px; }
 
   /* ── Next section ── */
-  .next-section { padding: 0 6vw; }
+  .next-section {
+    padding-inline: 5%;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
-  .next-title { font-size: clamp(32px, 9vw, 110px); }
+  .next-label { margin-bottom: 20px; }
+
+  .next-title {
+    font-size: clamp(30px, 8.5vw, 110px);
+    line-height: 1.08;
+  }
 
   /* ── Console typewriter ── */
-  .console-wrap { font-size: clamp(14px, 3.5vw, 64px); }
+  .console-wrap {
+    font-size: clamp(12px, 3.2vw, 64px);
+    padding-inline: 5%;
+    text-align: center;
+  }
 }
