@@ -57,15 +57,17 @@ const twEl    = document.getElementById('console-text');
 const twCur   = document.getElementById('console-underscore');
 const twWords = ['Where captured light becomes art', 'A fine art photography studio'];
 let   twIvals = [];
+let   twShownOnce = false;
 
-function startTypewriter() {
-  let visible = true, letterCount = 1, x = 1, waiting = false, wordIdx = 0;
+function startTypewriter(onComplete) {
+  let visible = true, letterCount = 1, x = 1, waiting = false, wordIdx = 0, done = false;
   const typing = setInterval(function () {
     const word = twWords[wordIdx % twWords.length];
     if (letterCount === 0 && !waiting) {
       waiting = true; twEl.innerHTML = '';
       setTimeout(function () { wordIdx++; x = 1; letterCount += x; waiting = false; }, 400);
     } else if (letterCount === word.length + 1 && !waiting) {
+      if (wordIdx === 1 && !done && onComplete) { done = true; onComplete(); }
       waiting = true;
       setTimeout(function () { x = -1; letterCount += x; waiting = false; }, 900);
     } else if (!waiting) {
@@ -147,8 +149,8 @@ mm.add('(min-width: 851px)', () => {
   gsap.timeline({
     scrollTrigger: {
       trigger: '.next-section', start: 'top top', end: '+=280%', pin: true, scrub: 1.5, anticipatePin: 1,
-      onEnter:     () => { lockScroll(); startTypewriter(unlockScroll); },
-      onLeaveBack: () => { stopTypewriter(); unlockScroll(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
+      onEnter:     () => { if (!twShownOnce) { lockScroll(); startTypewriter(() => { unlockScroll(); twShownOnce = true; }); } else { startTypewriter(); } },
+      onLeaveBack: () => { stopTypewriter(); if (!twShownOnce) unlockScroll(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
     },
   })
   .to('#console-wrap', { opacity: 0, duration: 0.12 }, 0.55)
@@ -220,8 +222,8 @@ mm.add('(max-width: 850px)', () => {
   gsap.timeline({
     scrollTrigger: {
       trigger: '.next-section', start: 'top top', end: '+=280%', pin: true, scrub: 1.5, anticipatePin: 1,
-      onEnter:     () => { lockScroll(); startTypewriter(unlockScroll); },
-      onLeaveBack: () => { stopTypewriter(); unlockScroll(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
+      onEnter:     () => { if (!twShownOnce) { lockScroll(); startTypewriter(() => { unlockScroll(); twShownOnce = true; }); } else { startTypewriter(); } },
+      onLeaveBack: () => { stopTypewriter(); if (!twShownOnce) unlockScroll(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
     },
   })
   .to('#console-wrap', { opacity: 0, duration: 0.12 }, 0.55)
