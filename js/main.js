@@ -147,8 +147,8 @@ mm.add('(min-width: 851px)', () => {
   gsap.timeline({
     scrollTrigger: {
       trigger: '.next-section', start: 'top top', end: '+=280%', pin: true, scrub: 1.5, anticipatePin: 1,
-      onEnter:     () => startTypewriter(),
-      onLeaveBack: () => { stopTypewriter(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
+      onEnter:     () => { lockScroll(); startTypewriter(unlockScroll); },
+      onLeaveBack: () => { stopTypewriter(); unlockScroll(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
     },
   })
   .to('#console-wrap', { opacity: 0, duration: 0.12 }, 0.55)
@@ -220,8 +220,8 @@ mm.add('(max-width: 850px)', () => {
   gsap.timeline({
     scrollTrigger: {
       trigger: '.next-section', start: 'top top', end: '+=280%', pin: true, scrub: 1.5, anticipatePin: 1,
-      onEnter:     () => startTypewriter(),
-      onLeaveBack: () => { stopTypewriter(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
+      onEnter:     () => { lockScroll(); startTypewriter(unlockScroll); },
+      onLeaveBack: () => { stopTypewriter(); unlockScroll(); gsap.set('.blind-bar', { xPercent: 0, rotation: 0 }); gsap.set('#console-wrap', { opacity: 1 }); },
     },
   })
   .to('#console-wrap', { opacity: 0, duration: 0.12 }, 0.55)
